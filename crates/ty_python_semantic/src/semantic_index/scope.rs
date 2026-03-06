@@ -101,7 +101,7 @@ impl FileScopeId {
 }
 
 #[derive(Debug, salsa::Update, get_size2::GetSize)]
-pub(crate) struct Scope {
+pub struct Scope {
     /// The parent scope, if any.
     parent: Option<FileScopeId>,
 
@@ -135,15 +135,15 @@ impl Scope {
         }
     }
 
-    pub(crate) fn parent(&self) -> Option<FileScopeId> {
+    pub fn parent(&self) -> Option<FileScopeId> {
         self.parent
     }
 
-    pub(crate) fn node(&self) -> &NodeWithScopeKind {
+    pub fn node(&self) -> &NodeWithScopeKind {
         &self.node
     }
 
-    pub(crate) fn kind(&self) -> ScopeKind {
+    pub fn kind(&self) -> ScopeKind {
         self.node().scope_kind()
     }
 

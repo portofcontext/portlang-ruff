@@ -13,7 +13,7 @@ pub struct ScopedSymbolId;
 
 /// A symbol in a given scope.
 #[derive(Debug, Clone, PartialEq, Eq, get_size2::GetSize, salsa::Update)]
-pub(crate) struct Symbol {
+pub struct Symbol {
     name: Name,
     flags: SymbolFlags,
 }
@@ -52,22 +52,22 @@ impl Symbol {
         }
     }
 
-    pub(crate) fn name(&self) -> &Name {
+    pub fn name(&self) -> &Name {
         &self.name
     }
 
     /// Is the symbol used in its containing scope?
-    pub(crate) fn is_used(&self) -> bool {
+    pub fn is_used(&self) -> bool {
         self.flags.contains(SymbolFlags::IS_USED)
     }
 
     /// Is the symbol given a value in its containing scope?
-    pub(crate) const fn is_bound(&self) -> bool {
+    pub const fn is_bound(&self) -> bool {
         self.flags.contains(SymbolFlags::IS_BOUND)
     }
 
     /// Is the symbol declared in its containing scope?
-    pub(crate) fn is_declared(&self) -> bool {
+    pub fn is_declared(&self) -> bool {
         self.flags.contains(SymbolFlags::IS_DECLARED)
     }
 

@@ -154,7 +154,7 @@ pub enum ScopedPlaceId {
 }
 
 #[derive(Debug, Eq, PartialEq, salsa::Update, get_size2::GetSize)]
-pub(crate) struct PlaceTable {
+pub struct PlaceTable {
     symbols: SymbolTable,
     members: MemberTable,
 }
@@ -176,7 +176,7 @@ impl PlaceTable {
     }
 
     /// Iterator over all symbols in this scope.
-    pub(crate) fn symbols(&self) -> std::slice::Iter<'_, Symbol> {
+    pub fn symbols(&self) -> std::slice::Iter<'_, Symbol> {
         self.symbols.iter()
     }
 
@@ -190,7 +190,7 @@ impl PlaceTable {
     /// ## Panics
     /// If the symbol ID is not found in the table.
     #[track_caller]
-    pub(crate) fn symbol(&self, id: ScopedSymbolId) -> &Symbol {
+    pub fn symbol(&self, id: ScopedSymbolId) -> &Symbol {
         self.symbols.symbol(id)
     }
 
@@ -211,7 +211,7 @@ impl PlaceTable {
     }
 
     /// Returns the [`ScopedSymbolId`] of the place named `name`.
-    pub(crate) fn symbol_id(&self, name: &str) -> Option<ScopedSymbolId> {
+    pub fn symbol_id(&self, name: &str) -> Option<ScopedSymbolId> {
         self.symbols.symbol_id(name)
     }
 

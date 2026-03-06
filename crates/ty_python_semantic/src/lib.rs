@@ -33,6 +33,14 @@ pub use types::ide_support::{
     type_hierarchy_supertypes,
 };
 pub use types::{DisplaySettings, TypeQualifiers};
+pub use semantic_index::{
+    SemanticIndex,
+    definition::{Definition, DefinitionKind},
+    scope::{Scope, ScopeId, FileScopeId},
+    symbol::{Symbol, ScopedSymbolId},
+    place::PlaceTable,
+};
+// Note: semantic_index function is accessible via semantic_index::semantic_index
 
 pub mod ast_node_ref;
 mod db;
